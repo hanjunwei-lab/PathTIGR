@@ -9,7 +9,7 @@ PathTIGR employs a three-component design: (1) pathway graph encoder with multi-
 
 ## 2. Design of PathTIGR
 
-![alt text](image/workflow.jpg "Design of PathTIGR")
+![alt text](Image/workflow.jpg "Design of PathTIGR")
 
 Figure 1: Overall architecture of PathTIGR
 
@@ -41,31 +41,73 @@ This study trained **PathTIGR** models for different immunotherapy inhibitors se
 | predict.ipynb | Training the PathTIGR model for predicting the cancer immunotherapy response.                                       |
 
 - Users may reproduce the **PathTIGR** model by following the implementation provided in *pathway_activity.ipynb*, or retrain the model using custom datasets. The principal trainable parameters are specified as follows::
+```
+with open("../Data/pathways_adjacency_matrix_without_disease.pkl", "rb") as f:
+    pathways_matrix = pickle.load(f)
+with open("../Data/Liu/com_data_144.pkl", "rb") as f:
+    com_data = pickle.load(f)
 
+pathway_model, patient_feature = train_pathway_model(pathways_matrix = pathways_matrix, features_matrix_list = com_data, GAE_epochs = 30000, learning_rate = 0.01, num_heads = 1,
+                                   ratio_val = 0, seed = 666, hidden1_dim = 3, hidden2_dim = 1, save_path = '../Data', patience = 20,device = devices)
+```
 
     * ``--GAE_epochs``:  The number of training iterations in GAE model.
+    * ``--learning_rate``:  The learning_rate of training the the autoencoder on pathway diagrams model.
+    * ``--num_heads``:  The number of attention heads.
+    * ``--ratio_val``:  Validation set ratio.   
+    * ``--seed``:  The random seed.    
     * ``--hidden1_dim``:  The dimension of the neurons in the first hidden layer.
     * ``--hidden2_dim``:  The dimension of the neurons in the second hidden layer.
-    * ``--global_epo``:  The number of total training iterations in PathTIGR model.
-    * ``--learning_rate``:  The learning_rate of training the PathTIGR model.
-    * ``--batch_size``:  The number of patients for each batch.
-    * ``--num_heads``:  The number of attention heads.
-    * ``--early_stopping_patience``: The number of patience in early stopping mechanism
-    * ``--dropout_prob``: The dropout possibility for PathTIGR model
+    * ``--save_path``:  The model save path.
+    * ``--patience``:  Early stopping patience value.
+    * ``--device``:  The device where the model and tensors are located.
+
     
-- Users may reproduce the **PathTIGR** model by following the implementation provided in *pathway_activity.ipynb*, or retrain the model using custom datasets. The principal trainable parameters are specified as follows::
+```
+with open("../Data/Liu//patient_feature_144.pkl", "rb") as f:
+    patient_feature = pickle.load(f)
+with open("../Data/Liu//pathway_model_144.pkl", "rb") as f:
+    pathway_model = pickle.load(f)
 
+pathway_activity = calculate_pathway_activity_3d(pathway_model = pathway_model, patient_feature = patient_feature, latent_dim = 6)
 
-    * ``--GAE_epochs``:  The number of training iterations in GAE model.
-    * ``--hidden1_dim``:  The dimension of the neurons in the first hidden layer.
-    * ``--hidden2_dim``:  The dimension of the neurons in the second hidden layer.
-    * ``--global_epo``:  The number of total training iterations in PathTIGR model.
-    * ``--learning_rate``:  The learning_rate of training the PathTIGR model.
+with open(f'../Data/Liu//pathway_activity_144.pkl', "wb") as f:
+    pickle.dump(pathway_activity, f, protocol=pickle.HIGHEST_PROTOCOL)
+```
+
+    * ``--latent_dim``:  The dimension of the neurons in hidden layer.
+    
+- Users may reproduce the **PathTIGR** model by following the implementation provided in *predict.ipynb*, or retrain the model using custom datasets. The principal trainable parameters are specified as follows::
+```  
+with open("../Data/Liu/pathway_activity_144.pkl", "rb") as f:
+    pathway_train = pickle.load(f)
+with open("../Data/Liu/patient_response_144.pkl", "rb") as f:
+    patient_response_train = pickle.load(f)
+pathway_train = pathway_train.view(pathway_train.size(0), -1)
+pathway_train = pd.DataFrame(pathway_train.detach().cpu().numpy())
+pathway_train.index = patient_response_train.index
+
+with open("../Data/Snyder/pathway_activity_60.pkl", "rb") as f:
+    pathway_val = pickle.load(f)
+with open("../Data/Snyder/patient_response_60.pkl", "rb") as f:
+    patient_response_val = pickle.load(f)
+
+seeds = np.random.randint(1000, 10000, size=10)
+for seed in seeds:
+    print(seed)
+    torch.manual_seed(seed)                                        
+    model=train_end_to_end_predict_model_nonEP(pathways_activity = pathway_train, patient_labels = patient_response_train, path_act_val = pathway_val,
+                                                         patients_val = patient_response_val, batch_size = 8, num_heads = 1, global_epo = 300,
+                                                         num_path = 230, save_best_model_path ='../Model', dropout = 0.3, seed = seed)
+```
+
     * ``--batch_size``:  The number of patients for each batch.
     * ``--num_heads``:  The number of attention heads.
-    * ``--early_stopping_patience``: The number of patience in early stopping mechanism
-    * ``--dropout_prob``: The dropout possibility for PathTIGR model
-      
+    * ``--global_epo``:  The number of total training iterations in PathTIGR model.
+    * ``--num_path``: The number of pathway.
+    * ``--save_best_model_path``: The model save path. 
+    * ``--dropout``: The dropout possibility for PathTIGR model.
+    * ``--seed``: The random seed.    
 ### 4.2. Data
 - The datasets used to train **PathTIGR** are partly located at folder ``Data/``(完整请参考):
 
@@ -73,10 +115,10 @@ This study trained **PathTIGR** models for different immunotherapy inhibitors se
 |------------------------------------|------------------------------------------------------------------------|
 | pathways_adjacency_matrix_without_disease.pkl                             | These biologically relevant pathways, which possess complete graph structure information, encompass important functional modules such as metabolic regulation, immune signaling, and cell cycle control.                            |
 | Liu/pathway_activity_144.pkl                           | The sample-specific pathway activity profiles for Liu Cohort.                            |
-| Liu/patient_response_144.pkl | The patient immune response label.                                      |
-| Liu/patient_feature_144.pkl | The patient immune response label.                                      |
+| Liu/patient_response_144.pkl | The patient immune response label for Liu Cohort.                                      |
+| Liu/patient_feature_144.pkl | The feature tensor saved according to "Pathway → Patient" and aligned to each pathway diagram for Liu Cohort.                                     |
 | Liu/com_data_144.pkl | The patient immune response label.                                      |
-| Liu/pathway_model_144.pkl | The predicting CTLA-4 immune response models                                      |
+| Liu/pathway_model_144.pkl | The predicting CTLA-4 immune response models.                                      |
 
 ## 5. Interpretation of the **PathTIGR** model
 
