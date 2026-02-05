@@ -1,6 +1,6 @@
 # PathTIGR: A pathway topology-informed graph representation learning framework for immunotherapy response prediction
 -----------------------------------------------------------------
-This repository contains source code and data for **PathTIGR** 
+This repository contains source code and data for **PathTIGR**. 
 
 ## 1. Introduction
 
