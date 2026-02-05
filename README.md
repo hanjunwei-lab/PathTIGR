@@ -87,7 +87,7 @@ with open(f'../Data/Liu//pathway_activity_144.pkl', "wb") as f:
 ```
 #### Model Hyperparameters
 
-`-latent_dim``:  The dimension of the neurons in hidden layer.
+`-latent_dim`:  The dimension of the neurons in hidden layer.
     
 #### 2. Users may reproduce the **PathTIGR** model by following the implementation provided in **predict.ipynb**, or retrain the model using custom datasets. The principal trainable parameters are specified as follows:
 ```  
