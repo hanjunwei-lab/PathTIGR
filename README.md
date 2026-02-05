@@ -50,17 +50,18 @@ with open("../Data/Liu/com_data_144.pkl", "rb") as f:
 pathway_model, patient_feature = train_pathway_model(pathways_matrix = pathways_matrix, features_matrix_list = com_data, GAE_epochs = 30000, learning_rate = 0.01, num_heads = 1,
                                    ratio_val = 0, seed = 666, hidden1_dim = 3, hidden2_dim = 1, save_path = '../Data', patience = 20,device = devices)
 ```
+#### Model Hyperparameters
 
-    * ``--GAE_epochs``:  The number of training iterations in GAE model.
-    * ``--learning_rate``:  The learning_rate of training the the autoencoder on pathway diagrams model.
-    * ``--num_heads``:  The number of attention heads.
-    * ``--ratio_val``:  Validation set ratio.   
-    * ``--seed``:  The random seed.    
-    * ``--hidden1_dim``:  The dimension of the neurons in the first hidden layer.
-    * ``--hidden2_dim``:  The dimension of the neurons in the second hidden layer.
-    * ``--save_path``:  The model save path.
-    * ``--patience``:  Early stopping patience value.
-    * ``--device``:  The device where the model and tensors are located.
+     `-GAE_epochs`:  The number of training iterations in GAE model.
+     `-learning_rate`:  The learning_rate of training the the autoencoder on pathway diagrams model.
+     `-num_heads`:  The number of attention heads.
+     `-ratio_val`:  Validation set ratio.   
+     `-seed`:  The random seed.    
+     `-hidden1_dim`:  The dimension of the neurons in the first hidden layer.
+     `-hidden2_dim`:  The dimension of the neurons in the second hidden layer.
+     `-save_path`:  The model save path.
+     `-patience`:  Early stopping patience value.
+     `-device`:  The device where the model and tensors are located.
 
     
 ```
