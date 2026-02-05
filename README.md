@@ -40,7 +40,7 @@ This study trained **PathTIGR** models for different immunotherapy inhibitors se
 | pathway_activity.ipynb | Train the autoencoder on pathway diagrams for generating pathway activity profiles.                                       |
 | predict.ipynb | Training the PathTIGR model for predicting the cancer immunotherapy response.                                       |
 
-- Users may reproduce the **PathTIGR** model by following the implementation provided in *pathway_activity.ipynb*, or retrain the model using custom datasets. The principal trainable parameters are specified as follows::
+#### 1. Users may reproduce the **PathTIGR** model by following the implementation provided in *pathway_activity.ipynb*, or retrain the model using custom datasets. The principal trainable parameters are specified as follows:
   
 ```
 with open("../Data/pathways_adjacency_matrix_without_disease.pkl", "rb") as f:
@@ -89,7 +89,7 @@ with open(f'../Data/Liu//pathway_activity_144.pkl', "wb") as f:
 
 `-latent_dim``:  The dimension of the neurons in hidden layer.
     
-- Users may reproduce the **PathTIGR** model by following the implementation provided in *predict.ipynb*, or retrain the model using custom datasets. The principal trainable parameters are specified as follows::
+#### 2. Users may reproduce the **PathTIGR** model by following the implementation provided in *predict.ipynb*, or retrain the model using custom datasets. The principal trainable parameters are specified as follows:
 ```  
 with open("../Data/Liu/pathway_activity_144.pkl", "rb") as f:
     pathway_train = pickle.load(f)
