@@ -5,7 +5,7 @@ This repository contains source code and data for **PathTIGR**.
 ## 1. Introduction
 
 **PathTIGR** is a Pathway Topology-Informed Graph Representation learning framework that systematically integrates biological pathway network topology knowledge with genome variation information for immunotherapy response prediction.
-PathTIGR employs a three-component design: (1) pathway graph encoder with multi-head attention embeding pathway topology knowledge and cancer genomic variants to pathway activity representation; (2) transformer module capturing pathway regulatory dependencies, and (3) multilayer perceptron synthesizing pathway-level representations to predict immunotherapy response. This architecture enables PathTIGR to capture complex molecular interactions underlying immunotherapy response while maintaining biological interpretability.
+PathTIGR employs a three-component design: (1) pathway graph encoder with multi-head attention embedding pathway topology knowledge and cancer genomic variants to pathway activity representation; (2) transformer module capturing pathway regulatory dependencies, and (3) multilayer perceptron synthesizing pathway-level representations to predict immunotherapy response. This architecture enables PathTIGR to capture complex molecular interactions underlying immunotherapy response while maintaining biological interpretability.
 
 ## 2. Design of PathTIGR
 
@@ -20,12 +20,12 @@ Figure 1: Overall architecture of PathTIGR
 * Anaconda
     * Comprehensive installation instructions for Anaconda are available at: https://docs.conda.io/projects/conda/en/latest/user-guide/install/.
 
-    * Following the installation of Anaconda, a virtual environment designated as PathTIGR can be created and the requisite dependencies can be installed from the ``GAE_environment.yml`` configuration file by executing the following command:
+    * Following the installation of Anaconda, a virtual environment designated as PathTIGR can be created, and the requisite dependencies can be installed from the ``GAE_environment.yml`` configuration file by executing the following command:
     ```
     conda env create -f GAE_environment.yml
     ```
 * PyTorch
-    PyTorch requires separate installation tailored to the specific hardware configuration. The appropriate installation command can be obtained from https://pytorch.org/.
+    PyTorch requires a separate installation tailored to the specific hardware configuration. The appropriate installation command can be obtained from https://pytorch.org/.
 
 
 ## 4. Usage
@@ -33,7 +33,7 @@ Figure 1: Overall architecture of PathTIGR
 This study trained **PathTIGR** models for different immunotherapy inhibitors separately. All the codes and data required to execute **PathTIGR** are provided in this GitHub repository. Please make sure to replace the input data path in the code with your own storage location.
 
 ### 4.1. Code
-- The complete code for **PathTIGR** is located at folder ``Code/``, with the details of each file as follows:
+- The complete code for **PathTIGR** in the located at folder ``Code/``, with the details of each file as follows:
 
 | File                              | Description                                                                   |
 |------------------------------------|------------------------------------------------------------------------|
@@ -53,9 +53,9 @@ pathway_model, patient_feature = train_pathway_model(pathways_matrix = pathways_
 ```
 #### Model Hyperparameters
 
-`-GAE_epochs`:  The number of training iterations in GAE model.
+`-GAE_epochs`:  The number of training iterations in the GAE model.
      
-`-learning_rate`:  The learning_rate of training the the autoencoder on pathway diagrams model.
+`-learning_rate`:  The learning rate of training the the autoencoder on pathway diagrams model.
      
 `-num_heads`:  The number of attention heads.
      
@@ -87,7 +87,7 @@ with open(f'../Data/Liu//pathway_activity_144.pkl', "wb") as f:
 ```
 #### Model Hyperparameters
 
-`-latent_dim`:  The dimension of the neurons in hidden layer.
+`-latent_dim`:  The dimension of the neurons in the hidden layer.
     
 #### 2. Users may reproduce the **PathTIGR** model by following the implementation provided in **predict.ipynb**, or retrain the model using custom datasets. The principal trainable parameters are specified as follows:
 ```  
@@ -119,38 +119,38 @@ for seed in seeds:
 
 `-num_heads`:  The number of attention heads.
 
-`-global_epo`:  The number of total training iterations in PathTIGR model.
+`-global_epo`:  The number of total training iterations in the PathTIGR model.
 
-`-num_path`: The number of pathway.
+`-num_path`: The number of pathways.
 
 `-save_best_model_path`: The model save path. 
 
-`-dropout`: The dropout possibility for PathTIGR model.
+`-dropout`: The dropout possibility for the PathTIGR model.
 
 `-seed`: The random seed.    
 
 ### 4.2. Data
-- The datasets used to train **PathTIGR** are partly located at folder ``Data/``(The complete data can be found at https://zenodo.org/records/18490164):
+- The datasets used to train **PathTIGR** are partly located in the folder ``Data/``(The complete data can be found at https://zenodo.org/records/18490164):
 
 | File                              | Description                                                                   |
 |------------------------------------|------------------------------------------------------------------------|
 | pathways_adjacency_matrix_without_disease.pkl                             | These biologically relevant pathways, which possess complete graph structure information, encompass important functional modules such as metabolic regulation, immune signaling, and cell cycle control.                            |
-| Liu/pathway_activity_144.pkl                           | The sample-specific pathway activity profiles for Liu Cohort.                            |
-| Liu/patient_response_144.pkl | The patient immune response label for Liu Cohort.                                      |
-| Liu/patient_feature_144.pkl | The feature tensor saved according to "Pathway → Patient" and aligned to each pathway diagram for Liu Cohort.                                     |
-| Liu/com_data_144.pkl | The patient immune response label.                                      |
+| Liu/pathway_activity_144.pkl                           | The sample-specific pathway activity profiles for the Liu Cohort.                            |
+| Liu/patient_response_144.pkl | The patient's immune response label for the Liu Cohort.                                      |
+| Liu/patient_feature_144.pkl | The feature tensor was saved according to "Pathway → Patient" and aligned to each pathway diagram for the Liu Cohort.                                     |
+| Liu/com_data_144.pkl | The patient's genomic characteristics include mutations, copy number amplifications, and copy number deletions.                                      |
 | Liu/pathway_model_144.pkl | The predicting CTLA-4 immune response models.                                      |
-| Van_Allen/pathway_activity_110.pkl                           | The sample-specific pathway activity profiles for Van Allen Cohort.                            |
-| Van_Allen/patient_response_110.pkl | The patient immune response label for Van Allen Cohort.                                      |
-| Van_Allen/patient_feature_110.pkl | The feature tensor saved according to "Pathway → Patient" and aligned to each pathway diagram for Van Allen Cohort.                                     |
-| Van_Allen/com_data_110.pkl | The patient immune response label.                                      |
+| Van_Allen/pathway_activity_110.pkl                           | The sample-specific pathway activity profiles for the Van Allen Cohort.                            |
+| Van_Allen/patient_response_110.pkl | The patient's immune response label for the Van Allen Cohort.                                      |
+| Van_Allen/patient_feature_110.pkl | The feature tensor was saved according to "Pathway → Patient" and aligned to each pathway diagram for the Van Allen Cohort.                                     |
+| Van_Allen/com_data_110.pkl | The patient's genomic characteristics include mutations, copy number amplifications, and copy number deletions.                                      |
 | Van_Allen/pathway_model_110.pkl | The predicting PD-1 immune response models.                                      |
-| Hugo/pathway_activity_30.pkl                           | The sample-specific pathway activity profiles for Hugo Cohort.                            |
-| Hugo/patient_response_30.pkl | The patient immune response label for Hugo Cohort.                                      |
-| Hugo/patient_feature_30.pkl | The feature tensor saved according to "Pathway → Patient" and aligned to each pathway diagram for Hugo Cohort.                                     |
-| Snyder/pathway_activity_60.pkl                           | The sample-specific pathway activity profiles for Snyder Cohort.                            |
-| Snyder/patient_response_60.pkl | The patient immune response label for Snyder Cohort.                                      |
-| Snyder/patient_feature_60.pkl | The feature tensor saved according to "Pathway → Patient" and aligned to each pathway diagram for Snyder Cohort.                                     |
+| Hugo/pathway_activity_30.pkl                           | The sample-specific pathway activity profiles for the Hugo Cohort.                            |
+| Hugo/patient_response_30.pkl | The patient's immune response label for the Hugo Cohort.                                      |
+| Hugo/patient_feature_30.pkl | The feature tensor was saved according to "Pathway → Patient" and aligned to each pathway diagram for the Hugo Cohort.                                     |
+| Snyder/pathway_activity_60.pkl                           | The sample-specific pathway activity profiles for the Snyder Cohort.                            |
+| Snyder/patient_response_60.pkl | The patient's immune response label for the Snyder Cohort.                                      |
+| Snyder/patient_feature_60.pkl | The feature tensor was saved according to "Pathway → Patient" and aligned to each pathway diagram for the Snyder Cohort.                                     |
 ## 5. Interpretation of the **PathTIGR** model
 
 To elucidate the biological mechanisms underlying **PathTIGR**’s predictions and identify key molecular determinants of immunotherapy response, we employed a dual **attention-based** importance scoring framework that integrates gene-level and pathway-level interpretability.
