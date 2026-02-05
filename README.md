@@ -85,8 +85,9 @@ pathway_activity = calculate_pathway_activity_3d(pathway_model = pathway_model, 
 with open(f'../Data/Liu//pathway_activity_144.pkl', "wb") as f:
     pickle.dump(pathway_activity, f, protocol=pickle.HIGHEST_PROTOCOL)
 ```
+#### Model Hyperparameters
 
-    * ``--latent_dim``:  The dimension of the neurons in hidden layer.
+`-latent_dim``:  The dimension of the neurons in hidden layer.
     
 - Users may reproduce the **PathTIGR** model by following the implementation provided in *predict.ipynb*, or retrain the model using custom datasets. The principal trainable parameters are specified as follows::
 ```  
@@ -111,14 +112,22 @@ for seed in seeds:
                                                          patients_val = patient_response_val, batch_size = 8, num_heads = 1, global_epo = 300,
                                                          num_path = 230, save_best_model_path ='../Model', dropout = 0.3, seed = seed)
 ```
+#### Model Hyperparameters
 
-    * ``--batch_size``:  The number of patients for each batch.
-    * ``--num_heads``:  The number of attention heads.
-    * ``--global_epo``:  The number of total training iterations in PathTIGR model.
-    * ``--num_path``: The number of pathway.
-    * ``--save_best_model_path``: The model save path. 
-    * ``--dropout``: The dropout possibility for PathTIGR model.
-    * ``--seed``: The random seed.    
+`-batch_size``:  The number of patients for each batch.
+
+`-num_heads``:  The number of attention heads.
+
+`-global_epo``:  The number of total training iterations in PathTIGR model.
+
+`-num_path``: The number of pathway.
+
+`-save_best_model_path``: The model save path. 
+
+`-dropout``: The dropout possibility for PathTIGR model.
+
+`-seed``: The random seed.    
+
 ### 4.2. Data
 - The datasets used to train **PathTIGR** are partly located at folder ``Data/``(完整请参考):
 
