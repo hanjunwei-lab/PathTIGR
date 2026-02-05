@@ -5,7 +5,7 @@ This repository contains source code and data for **PathTIGR**.
 ## 1. Introduction
 
 **PathTIGR** is a Pathway Topology-Informed Graph Representation learning framework that systematically integrates biological pathway network topology knowledge with genome variation information for immunotherapy response prediction.
-PathTIGR employs a three-component design: (1) pathway graph encoder with multi-head attention embedding pathway topology knowledge and cancer genomic variants to pathway activity representation; (2) transformer module capturing pathway regulatory dependencies, and (3) multilayer perceptron synthesizing pathway-level representations to predict immunotherapy response. This architecture enables PathTIGR to capture complex molecular interactions underlying immunotherapy response while maintaining biological interpretability.
+PathTIGR employs a three-component design: (1) pathway graph encoder with multi-head attention embedding pathway topology knowledge and cancer genomic variants to pathway activity representation; (2) transformer module capturing pathway regulatory dependencies, (3) multilayer perceptron synthesizing pathway-level representations to predict immunotherapy response. This architecture enables PathTIGR to capture complex molecular interactions underlying immunotherapy response while maintaining biological interpretability.
 
 ## 2. Design of PathTIGR
 
