@@ -95,6 +95,7 @@ with open("../Data/Liu/pathway_activity_144.pkl", "rb") as f:
     pathway_train = pickle.load(f)
 with open("../Data/Liu/patient_response_144.pkl", "rb") as f:
     patient_response_train = pickle.load(f)
+
 pathway_train = pathway_train.view(pathway_train.size(0), -1)
 pathway_train = pd.DataFrame(pathway_train.detach().cpu().numpy())
 pathway_train.index = patient_response_train.index
