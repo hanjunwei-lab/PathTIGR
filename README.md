@@ -41,6 +41,7 @@ This study trained **PathTIGR** models for different immunotherapy inhibitors se
 | predict.ipynb | Training the PathTIGR model for predicting the cancer immunotherapy response.                                       |
 
 - Users may reproduce the **PathTIGR** model by following the implementation provided in *pathway_activity.ipynb*, or retrain the model using custom datasets. The principal trainable parameters are specified as follows::
+  
 ```
 with open("../Data/pathways_adjacency_matrix_without_disease.pkl", "rb") as f:
     pathways_matrix = pickle.load(f)
@@ -53,14 +54,23 @@ pathway_model, patient_feature = train_pathway_model(pathways_matrix = pathways_
 #### Model Hyperparameters
 
      `-GAE_epochs`:  The number of training iterations in GAE model.
+     
      `-learning_rate`:  The learning_rate of training the the autoencoder on pathway diagrams model.
+     
      `-num_heads`:  The number of attention heads.
+     
      `-ratio_val`:  Validation set ratio.   
+     
      `-seed`:  The random seed.    
+     
      `-hidden1_dim`:  The dimension of the neurons in the first hidden layer.
+     
      `-hidden2_dim`:  The dimension of the neurons in the second hidden layer.
+     
      `-save_path`:  The model save path.
+     
      `-patience`:  Early stopping patience value.
+     
      `-device`:  The device where the model and tensors are located.
 
     
