@@ -53,25 +53,25 @@ pathway_model, patient_feature = train_pathway_model(pathways_matrix = pathways_
 ```
 #### Model Hyperparameters
 
-     `-GAE_epochs`:  The number of training iterations in GAE model.
+`-GAE_epochs`:  The number of training iterations in GAE model.
      
-     `-learning_rate`:  The learning_rate of training the the autoencoder on pathway diagrams model.
+`-learning_rate`:  The learning_rate of training the the autoencoder on pathway diagrams model.
      
-     `-num_heads`:  The number of attention heads.
+`-num_heads`:  The number of attention heads.
      
-     `-ratio_val`:  Validation set ratio.   
+`-ratio_val`:  Validation set ratio.   
      
-     `-seed`:  The random seed.    
+`-seed`:  The random seed.    
      
-     `-hidden1_dim`:  The dimension of the neurons in the first hidden layer.
+`-hidden1_dim`:  The dimension of the neurons in the first hidden layer.
      
-     `-hidden2_dim`:  The dimension of the neurons in the second hidden layer.
+`-hidden2_dim`:  The dimension of the neurons in the second hidden layer.
      
-     `-save_path`:  The model save path.
+`-save_path`:  The model save path.
      
-     `-patience`:  Early stopping patience value.
+`-patience`:  Early stopping patience value.
      
-     `-device`:  The device where the model and tensors are located.
+`-device`:  The device where the model and tensors are located.
 
     
 ```
