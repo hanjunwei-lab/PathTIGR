@@ -140,7 +140,17 @@ for seed in seeds:
 | Liu/patient_feature_144.pkl | The feature tensor saved according to "Pathway → Patient" and aligned to each pathway diagram for Liu Cohort.                                     |
 | Liu/com_data_144.pkl | The patient immune response label.                                      |
 | Liu/pathway_model_144.pkl | The predicting CTLA-4 immune response models.                                      |
-
+| Van_Allen/pathway_activity_110.pkl                           | The sample-specific pathway activity profiles for Van Allen Cohort.                            |
+| Van_Allen/patient_response_110.pkl | The patient immune response label for Van Allen Cohort.                                      |
+| Van_Allen/patient_feature_110.pkl | The feature tensor saved according to "Pathway → Patient" and aligned to each pathway diagram for Van Allen Cohort.                                     |
+| Van_Allen/com_data_110.pkl | The patient immune response label.                                      |
+| Van_Allen/pathway_model_110.pkl | The predicting PD-1 immune response models.                                      |
+| Hugo/pathway_activity_30.pkl                           | The sample-specific pathway activity profiles for Hugo Cohort.                            |
+| Hugo/patient_response_30.pkl | The patient immune response label for Hugo Cohort.                                      |
+| Hugo/patient_feature_30.pkl | The feature tensor saved according to "Pathway → Patient" and aligned to each pathway diagram for Hugo Cohort.                                     |
+| Snyder/pathway_activity_60.pkl                           | The sample-specific pathway activity profiles for Snyder Cohort.                            |
+| Snyder/patient_response_60.pkl | The patient immune response label for Snyder Cohort.                                      |
+| Snyder/patient_feature_60.pkl | The feature tensor saved according to "Pathway → Patient" and aligned to each pathway diagram for Snyder Cohort.                                     |
 ## 5. Interpretation of the **PathTIGR** model
 
 To elucidate the biological mechanisms underlying **PathTIGR**’s predictions and identify key molecular determinants of immunotherapy response, we employed a dual **attention-based** importance scoring framework that integrates gene-level and pathway-level interpretability.
