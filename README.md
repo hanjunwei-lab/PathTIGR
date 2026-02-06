@@ -48,10 +48,13 @@ with open("../Data/pathways_adjacency_matrix_without_disease.pkl", "rb") as f:
 with open("../Data/Liu/com_data_144.pkl", "rb") as f:
     com_data = pickle.load(f)
 
-pathway_model, patient_feature = train_pathway_model(pathways_matrix = pathways_matrix, features_matrix_list = com_data, GAE_epochs = 30000, learning_rate = 0.01, num_heads = 1,
-                                   ratio_val = 0, seed = 666, hidden1_dim = 3, hidden2_dim = 1, save_path = '../Data', patience = 20,device = devices)
+pathway_model, patient_feature = train_pathway_model(pathways_matrix = pathways_matrix, features_matrix_list = com_data, attn_type="graph", GAE_epochs = 30000, learning_rate = 0.01, num_heads = 1,
+                                   ratio_val = 0, seed = 666, hidden1_dim = 3, hidden2_dim = 1, save_path = '/test_Data', patience = 20,device = devices)
+
 ```
 #### Model Hyperparameters
+
+`-attn_type`:  Controls which type of attention module is used in the encoder to process node features. "self": uses self-attention; "graph": uses graph attention (str, default "self").
 
 `-GAE_epochs`:  The number of training iterations in the GAE model.
      
