@@ -142,18 +142,21 @@ for seed in seeds:
 | Liu/patient_response_144.pkl | The patient's immune response label for the Liu Cohort.                                      |
 | Liu/patient_feature_144.pkl | The feature tensor was saved according to "Pathway → Patient" and aligned to each pathway diagram for the Liu Cohort.                                     |
 | Liu/com_data_144.pkl | The patient's genomic characteristics include mutations, copy number amplifications, and copy number deletions.                                      |
-| Liu/pathway_model_144.pkl | The predicting CTLA-4 immune response models.                                      |
+| Liu/pathway_model_144.pkl | The predicted pathway activity models for the CTLA-4 patients.                                      |
 | Van_Allen/pathway_activity_110.pkl                           | The sample-specific pathway activity profiles for the Van Allen Cohort.                            |
 | Van_Allen/patient_response_110.pkl | The patient's immune response label for the Van Allen Cohort.                                      |
 | Van_Allen/patient_feature_110.pkl | The feature tensor was saved according to "Pathway → Patient" and aligned to each pathway diagram for the Van Allen Cohort.                                     |
 | Van_Allen/com_data_110.pkl | The patient's genomic characteristics include mutations, copy number amplifications, and copy number deletions.                                      |
-| Van_Allen/pathway_model_110.pkl | The predicting PD-1 immune response models.                                      |
+| Van_Allen/pathway_model_110.pkl | The predicted pathway activity models for the PD-1 patients.                                       |
 | Hugo/pathway_activity_30.pkl                           | The sample-specific pathway activity profiles for the Hugo Cohort.                            |
 | Hugo/patient_response_30.pkl | The patient's immune response label for the Hugo Cohort.                                      |
 | Hugo/patient_feature_30.pkl | The feature tensor was saved according to "Pathway → Patient" and aligned to each pathway diagram for the Hugo Cohort.                                     |
 | Snyder/pathway_activity_60.pkl                           | The sample-specific pathway activity profiles for the Snyder Cohort.                            |
 | Snyder/patient_response_60.pkl | The patient's immune response label for the Snyder Cohort.                                      |
 | Snyder/patient_feature_60.pkl | The feature tensor was saved according to "Pathway → Patient" and aligned to each pathway diagram for the Snyder Cohort.                                     |
+| best_model_CTLA4.pt | The predicting CTLA-4 immune response models.                                     |
+| best_model_PD1.pt | The predicting PD-1 immune response models.                                     |
+
 ## 5. Interpretation of the **PathTIGR** model
 
 To elucidate the biological mechanisms underlying **PathTIGR**’s predictions and identify key molecular determinants of immunotherapy response, we employed a dual **attention-based** importance scoring framework that integrates gene-level and pathway-level interpretability.
