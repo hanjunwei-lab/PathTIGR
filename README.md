@@ -133,7 +133,7 @@ for seed in seeds:
 `-seed`: The random seed.    
 
 ### 4.2. Data
-- The datasets used to train **PathTIGR** are partly located in the folder ``Data/``(The complete data can be found at https://zenodo.org/records/18502553):
+- The datasets used to train **PathTIGR** are partly located in the folder ``Data/``(The complete data can be found at https://zenodo.org/records/18512966):
 
 | File                              | Description                                                                   |
 |------------------------------------|------------------------------------------------------------------------|
